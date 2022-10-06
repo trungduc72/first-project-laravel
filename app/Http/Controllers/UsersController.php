@@ -10,7 +10,7 @@ use App\Models\Users;
 class UsersController extends Controller
 {
     private $user;
-    public function __contruct(){
+    public function __construct(){
         $this->user = new Users();
     }   
         
@@ -49,9 +49,9 @@ class UsersController extends Controller
 
         $user = new Users();
         // dd($dataInsert);
-        // $this->user->addUser($dataInsert);
+        $this->user->addUser($dataInsert);
 
-        DB::insert('insert into users (name, email) values(?, ?)', $dataInsert);
+        // DB::insert('insert into users (name, email) values(?, ?)', $dataInsert);
 
         return redirect()->route('users')->with('msg', 'Done');
     }
@@ -60,7 +60,7 @@ class UsersController extends Controller
         $title = 'Edit User';
 
         if(!empty($id)){
-            $userDetail = DB::select('select *from users where id = ?', [$id]);
+            $userDetail = $this->user->getDetails($id); 
             
             if (!empty($userDetail[0])) {
                 $userDetail = $userDetail[0];
@@ -93,14 +93,16 @@ class UsersController extends Controller
 
         $dataUpdate = array_merge($dataUpdate, [$id]);
 
-        DB::update('update users set name=?, email=? where id = ?', $dataUpdate);
+        $this->user->editUser($dataUpdate);
+
+        // DB::update('update users set name=?, email=? where id = ?', $dataUpdate);
 
         return back()->with('msg', 'Done');
     }
 
     public function delete($id=0 ){
         if(!empty($id)){
-            $userDetail = DB::delete('delete from users where id = ?', [$id]);
+            $userDetail = $this->user->deleteUser($id);
             
             if (!empty($userDetail[0])) {
                 $userDetail = $userDetail[0];
