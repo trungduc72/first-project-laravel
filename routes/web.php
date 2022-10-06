@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,6 @@ use App\Http\Controllers\UsersController;
 */
 
 //Client Routes
-
 Route::prefix('categories')->group(function(){
 
     //Danh sach chuyen muc
@@ -41,7 +41,16 @@ Route::prefix('categories')->group(function(){
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory']);
 });
 
+//Home 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//Account
+Route::get('/register', [AccountController::class, 'showFormRegister'])->name('form-register');
+Route::post('/register', [AccountController::class, 'register'])->name('register');
+
+Route::get('/login', [AccountController::class, 'showFormLogin'])->name('form-login');
+Route::get('/login', [AccountController::class, 'showFormLogin'])->name('login');
+
 
 //Users
 Route::prefix('/users')->group(function(){

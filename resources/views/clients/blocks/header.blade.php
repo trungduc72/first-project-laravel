@@ -15,6 +15,8 @@
                           <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
                           <a class="nav-link" href="{{route('users')}}">Users</a>
                           <a class="nav-link" href="#">Pricing</a>
+                          <a class="nav-link" href="{{route('login')}}">Login</a>
+                          <a class="nav-link" href="{{route('register')}}">Register</a>
                         </div>
                       </div>
                     </div>

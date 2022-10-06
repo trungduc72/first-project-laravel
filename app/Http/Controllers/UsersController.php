@@ -47,7 +47,6 @@ class UsersController extends Controller
             $request->email
         ];
 
-        $user = new Users();
         // dd($dataInsert);
         $this->user->addUser($dataInsert);
 
