@@ -51,7 +51,7 @@ Route::post('/register', [AccountController::class, 'register'])->name('register
 Route::get('/login', [AccountController::class, 'showFormLogin'])->name('form-login');
 Route::post('/login', [AccountController::class, 'postLogin'])->name('login');
 
-Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
+Route::get('/logout', [AccountController::class, 'logOut'])->name('logout');
 
 //Users
 Route::prefix('/users')->group(function(){

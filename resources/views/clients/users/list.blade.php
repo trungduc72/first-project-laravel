@@ -63,5 +63,5 @@
 @endsection
 
 @section('account')
-    <a class="nav-link" href="{{route('home')}}">Log out</a>
+    <a class="nav-link" href="{{route('logout')}}">Log out</a>
 @endsection

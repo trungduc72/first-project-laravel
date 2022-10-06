@@ -57,7 +57,7 @@ class AccountController extends Controller
         else return redirect()->route('login');
     }
 
-    public function logout(){
+    public function logOut(){
         Auth::logout();
         return redirect()->route('login');
     }
