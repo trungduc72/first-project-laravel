@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use DB;
 use App\Models\Users;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -15,12 +16,15 @@ class UsersController extends Controller
     }   
         
     public function index(){
-        $title = 'Users list';
-
-        $user = new Users();
-        $users = $user->getAllUsers();
-        
-        return view('clients.users.list', compact('users', 'title'));
+        if(Auth::check()){
+            $title = 'Users list';
+    
+            $user = new Users();
+            $users = $user->getAllUsers();
+            
+            return view('clients.users.list', compact('users', 'title'));
+        }
+        return redirect()->route('login');
     }
 
     public function addUser(){

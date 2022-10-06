@@ -13,10 +13,9 @@
                       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                           <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
-                          <a class="nav-link" href="{{route('users')}}">Users</a>
+                          @yield('list_user')
                           <a class="nav-link" href="#">Pricing</a>
-                          <a class="nav-link" href="{{route('login')}}">Login</a>
-                          <a class="nav-link" href="{{route('register')}}">Register</a>
+                          @yield('account')
                         </div>
                       </div>
                     </div>

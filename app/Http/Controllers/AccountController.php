@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Accounts;
+use Auth;
 
 class AccountController extends Controller
 {
@@ -28,11 +29,12 @@ class AccountController extends Controller
 
         $this->account->addAccount($dataInsert);
 
-        // $this->account->username = $request->username;            
-        // $this->account->password = bcrypt($request->password);            
-        // $this->account->phone = $request->phone;            
+        // $acc = new Accounts();
+        // $acc->username = $request->username;            
+        // $acc->password = bcrypt($request->password);            
+        // $acc->phone = $request->phone;            
 
-        // $this->account->save();    
+        // $acc->save();    
 
         return redirect()->route('login');
     }
@@ -41,5 +43,22 @@ class AccountController extends Controller
         $title= 'Login';
 
         return view('clients.account.login', compact('title'));
+    }
+
+    public function postLogin(Request $request){
+        $array = [
+            'username' => $request->username,
+            'password' => $request->password
+        ];
+
+        if(Auth::attempt($array)){
+            return redirect()->route('users');
+        }
+        else return redirect()->route('login');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

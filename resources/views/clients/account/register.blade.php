@@ -4,6 +4,11 @@
     {{$title}}
 @endsection
 
+@section('account')
+    <a class="nav-link" href="{{route('login')}}">Login</a>
+    <a class="nav-link" href="{{route('register')}}">Register</a>
+@endsection
+
 @section('content')
 <div class="container py-5">
     <div class="row">

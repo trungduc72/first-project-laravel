@@ -4,6 +4,10 @@
     {{$title}}
 @endsection
 
+@section('list_user')
+    <a class="nav-link" href="{{route('users')}}">Users</a>
+@endsection
+
 @section('content')
     <div class="container py-5">
         <div class="row">
@@ -56,4 +60,8 @@
         </div>
     </div>
     
+@endsection
+
+@section('account')
+    <a class="nav-link" href="{{route('home')}}">Log out</a>
 @endsection
