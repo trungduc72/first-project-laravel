@@ -20,6 +20,12 @@ class AccountController extends Controller
     }
 
     public function register(Request $request){
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required | min:5',
+            'c-password' => 'required | min:5',
+            'phone' => 'required'
+        ]);
         
         $dataInsert = [
             $request->username,
@@ -46,6 +52,11 @@ class AccountController extends Controller
     }
 
     public function postLogin(Request $request){
+        $request->validate([
+            'username'=> 'required',
+            'password'=> 'required'
+        ]);
+
         $array = [
             'username' => $request->username,
             'password' => $request->password
